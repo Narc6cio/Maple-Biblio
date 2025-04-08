@@ -1,0 +1,141 @@
+
+/* Global Styles */
+:root {
+    --primary-color: #FFC107; /* Yellow */
+    --secondary-color: #212529; /* Dark */
+    --light-color: #FFFFFF; /* White */
+    --gray-color: #F8F9FA;
+    --border-color: #DEE2E6;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    background-color: #F8F9FA;
+}
+
+/* Header styles */
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+/* Hero section styles */
+.hero-section {
+    background-color: var(--light-color);
+    padding: 5rem 0;
+}
+
+/* Feature icons */
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 1.5rem;
+}
+
+/* Book cards */
+.book-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.book-availability {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 1;
+}
+
+.book-availability.available {
+    background-color: #28a745;
+    color: white;
+}
+
+.book-availability.unavailable {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Account page styles */
+.account-section .list-group-item.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+/* Login and Register forms */
+.login-section, .register-section {
+    min-height: calc(100vh - 300px);
+    display: flex;
+    align-items: center;
+}
+
+/* Tables */
+.table th {
+    background-color: var(--gray-color);
+}
+
+/* Form elements */
+.form-control:focus, .btn:focus {
+    box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+    border-color: var(--primary-color);
+}
+
+/* Pagination customization */
+.page-item.active .page-link {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.page-link {
+    color: var(--secondary-color);
+}
+
+.page-link:hover {
+    color: var(--primary-color);
+}
+
+/* Badge customization */
+.badge.bg-warning {
+    color: var(--secondary-color) !important;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+        padding: 3rem 0;
+    }
+    
+    .hero-section img {
+        margin-top: 2rem;
+    }
+    
+    .feature-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}

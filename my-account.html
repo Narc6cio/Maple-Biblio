@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - Maple Biblio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <span class="text-warning">Maple</span> Biblio
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="books.html">Books</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="my-account.html">My Account</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="logoutBtn">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Account Section -->
+    <section class="account-section py-5">
+        <div class="container">
+            <h1 class="mb-4">My Account</h1>
+            
+            <div class="row">
+                <!-- Left Sidebar -->
+                <div class="col-md-3 mb-4">
+                    <div class="list-group">
+                        <a href="#dashboard" class="list-group-item list-group-item-action active" data-bs-toggle="list">Dashboard</a>
+                        <a href="#borrowedBooks" class="list-group-item list-group-item-action" data-bs-toggle="list">Borrowed Books</a>
+                        <a href="#reservations" class="list-group-item list-group-item-action" data-bs-toggle="list">Reservations</a>
+                        <a href="#history" class="list-group-item list-group-item-action" data-bs-toggle="list">Borrowing History</a>
+                        <a href="#recommendations" class="list-group-item list-group-item-action" data-bs-toggle="list">Recommendations</a>
+                        <a href="#notifications" class="list-group-item list-group-item-action" data-bs-toggle="list">Notifications</a>
+                        <a href="#profile" class="list-group-item list-group-item-action" data-bs-toggle="list">Profile Settings</a>
+                    </div>
+                </div>
+                
+                <!-- Right Content Area -->
+                <div class="col-md-9">
+                    <div class="tab-content">
+                        <!-- Dashboard -->
+                        <div class="tab-pane fade show active" id="dashboard">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h3 class="card-title">Welcome, <span id="userName">User</span>!</h3>
+                                    
+                                    <div class="row g-4 mt-3">
+                                        <div class="col-sm-6 col-lg-3">
+                                            <div class="card h-100 border-warning">
+                                                <div class="card-body text-center">
+                                                    <h5 class="card-title text-muted">Books Borrowed</h5>
+                                                    <p class="display-5 fw-bold text-warning" id="borrowedCount">0</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-lg-3">
+                                            <div class="card h-100 border-warning">
+                                                <div class="card-body text-center">
+                                                    <h5 class="card-title text-muted">Reserved Books</h5>
+                                                    <p class="display-5 fw-bold text-warning" id="reservedCount">0</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-lg-3">
+                                            <div class="card h-100 border-warning">
+                                                <div class="card-body text-center">
+                                                    <h5 class="card-title text-muted">Due Soon</h5>
+                                                    <p class="display-5 fw-bold text-warning" id="dueSoonCount">0</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-lg-3">
+                                            <div class="card h-100 border-warning">
+                                                <div class="card-body text-center">
+                                                    <h5 class="card-title text-muted">Notifications</h5>
+                                                    <p class="display-5 fw-bold text-warning" id="notificationsCount">0</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-4">
+                                        <h5>Recent Activity</h5>
+                                        <div class="list-group" id="recentActivity">
+                                            <div class="list-group-item list-group-item-action">
+                                                <div class="d-flex w-100 justify-content-between">
+                                                    <h6 class="mb-1">Book borrowed: <strong>Pride and Prejudice</strong></h6>
+                                                    <small>3 days ago</small>
+                                                </div>
+                                                <p class="mb-1">Due date: July 12, 2023</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Borrowed Books -->
+                        <div class="tab-pane fade" id="borrowedBooks">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h3 class="card-title">Borrowed Books</h3>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover" id="borrowedBooksTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Book Title</th>
+                                                    <th>Author</th>
+                                                    <th>Borrowed Date</th>
+                                                    <th>Due Date</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- Sample row -->
+                                                <tr>
+                                                    <td>Pride and Prejudice</td>
+                                                    <td>Jane Austen</td>
+                                                    <td>June 12, 2023</td>
+                                                    <td>July 12, 2023</td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-warning">Extend</button>
+                                                        <button class="btn btn-sm btn-outline-dark">Return</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Reservations -->
+                        <div class="tab-pane fade" id="reservations">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h3 class="card-title">My Reservations</h3>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover" id="reservationsTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Book Title</th>
+                                                    <th>Author</th>
+                                                    <th>Reservation Date</th>
+                                                    <th>Status</th>
+                                                    <th>Queue Position</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- Sample row -->
+                                                <tr>
+                                                    <td>The Great Gatsby</td>
+                                                    <td>F. Scott Fitzgerald</td>
+                                                    <td>June 10, 2023</td>
+                                                    <td><span class="badge bg-warning text-dark">Pending</span></td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-outline-danger">Cancel</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- History -->
+                        <div class="tab-pane fade" id="history">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h3 class="card-title">Borrowing History</h3>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover" id="historyTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Book Title</th>
+                                                    <th>Author</th>
+                                                    <th>Borrowed Date</th>
+                                                    <th>Returned Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- Sample row -->
+                                                <tr>
+                                                    <td>To Kill a Mockingbird</td>
+                                                    <td>Harper Lee</td>
+                                                    <td>May 5, 2023</td>
+                                                    <td>June 1, 2023</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Recommendations -->
+                        <div class="tab-pane fade" id="recommendations">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h3 class="card-title">Recommended for You</h3>
+                                    <p class="text-muted">Based on your reading history</p>
+                                    
+                                    <div class="row g-4" id="recommendationsList">
+                                        <!-- Sample recommendation -->
+                                        <div class="col-md-4">
+                                            <div class="card h-100">
+                                                <img src="https://placehold.co/300x450/FFC107/000000?text=Book+Cover" class="card-img-top" alt="Book Cover">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Jane Eyre</h5>
+                                                    <p class="card-text">Charlotte Brontë</p>
+                                                    <div class="d-grid">
+                                                        <a href="#" class="btn btn-outline-warning">Reserve</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Notifications -->
+                        <div class="tab-pane fade" id="notifications">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h3 class="card-title">My Notifications</h3>
+                                    
+                                    <div class="list-group" id="notificationsList">
+                                        <!-- Sample notification -->
+                                        <div class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h6 class="mb-1">Book Available: <strong>The Great Gatsby</strong></h6>
+                                                <small>Today</small>
+                                            </div>
+                                            <p class="mb-1">The book you reserved is now available for pickup.</p>
+                                            <small class="text-muted">You have 3 days to borrow this book before your reservation expires.</small>
+                                        </div>
+                                        
+                                        <div class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h6 class="mb-1">Return Reminder: <strong>Pride and Prejudice</strong></h6>
+                                                <small>Yesterday</small>
+                                            </div>
+                                            <p class="mb-1">This book is due in 3 days. Please return it on time.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Profile Settings -->
+                        <div class="tab-pane fade" id="profile">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <h3 class="card-title">Profile Settings</h3>
+                                    
+                                    <form id="profileForm" action="php/controllers/UserController.php" method="post">
+                                        <input type="hidden" name="action" value="updateProfile">
+                                        
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="updateFirstName" class="form-label">First Name</label>
+                                                <input type="text" class="form-control" id="updateFirstName" name="prenom" required>
+                                            </div>
+                                            
+                                            <div class="col-md-6 mb-3">
+                                                <label for="updateLastName" class="form-label">Last Name</label>
+                                                <input type="text" class="form-control" id="updateLastName" name="nom" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="updateEmail" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="updateEmail" name="email" required>
+                                        </div>
+                                        
+                                        <hr>
+                                        
+                                        <h5>Change Password</h5>
+                                        
+                                        <div class="mb-3">
+                                            <label for="currentPassword" class="form-label">Current Password</label>
+                                            <input type="password" class="form-control" id="currentPassword" name="currentPassword">
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="newPassword" class="form-label">New Password</label>
+                                            <input type="password" class="form-control" id="newPassword" name="newPassword">
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="confirmNewPassword" class="form-label">Confirm New Password</label>
+                                            <input type="password" class="form-control" id="confirmNewPassword" name="confirmNewPassword">
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <h5>Notification Preferences</h5>
+                                            
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" value="1" id="emailNotifications" name="emailNotifications" checked>
+                                                <label class="form-check-label" for="emailNotifications">
+                                                    Receive email notifications
+                                                </label>
+                                            </div>
+                                            
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" value="1" id="returnReminders" name="returnReminders" checked>
+                                                <label class="form-check-label" for="returnReminders">
+                                                    Receive return reminders
+                                                </label>
+                                            </div>
+                                            
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" value="1" id="availabilityAlerts" name="availabilityAlerts" checked>
+                                                <label class="form-check-label" for="availabilityAlerts">
+                                                    Receive book availability alerts
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="d-grid">
+                                            <button type="submit" class="btn btn-warning">Save Changes</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><span class="text-warning">Maple</span> Biblio</h5>
+                    <p>Your online library management system.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2023 Maple Biblio. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/account.js"></script>
+</body>
+</html>
